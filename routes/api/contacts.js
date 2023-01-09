@@ -5,13 +5,22 @@ const { schemas } = require("../../models/contact");
 const router = express.Router();
 
 router.get("/", ctrl.listContacts);
+router.get("/", ctrl.listContacts);
 
+router.get("/:contactId", ctrl.getContactById);
 router.get("/:contactId", ctrl.getContactById);
 
 router.post("/", validateBody(schemas.contactSchema), ctrl.addContact);
+router.post("/", validateBody(schemas.contactSchema), ctrl.addContact);
 
 router.delete("/:contactId", ctrl.removeContact);
+router.delete("/:contactId", ctrl.removeContact);
 
+router.put(
+  "/:contactId",
+  validateBody(schemas.contactSchema),
+  ctrl.updateContact
+);
 router.put(
   "/:contactId",
   validateBody(schemas.contactSchema),
