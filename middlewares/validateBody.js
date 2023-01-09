@@ -1,4 +1,4 @@
-const HttpError = require("../routes/api/helpers/index");
+const HttpError = require("../helpers/index");
 
 const validateBody = (schema) => {
   const func = (res, req, next) => {
