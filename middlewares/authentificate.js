@@ -3,8 +3,8 @@ const { SECRET_KEY } = process.env;
 const HttpError = require("../helpers/index");
 const { User } = require("../models/user");
 
-const authentificate = async (res, req, next) => {
-  const { authorization } = req.headers;
+const authentificate = async (req, res, next) => {
+  const { authorization = "" } = req.headers;
   const [bearer, token] = authorization.split(" ");
   if (bearer !== "Bearer") {
     next(HttpError(401));
