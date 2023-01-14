@@ -12,13 +12,13 @@ const authentificate = async (req, res, next) => {
   try {
     const { id } = jwt.verify(token, SECRET_KEY);
     const user = await User.findById(id);
-    if (!user) {
+    if (!user || !user.token) {
       next(HttpError(401, { message: "Not authorized" }));
     }
     req.user = user;
     next();
   } catch {
-    next(HttpError);
+    next(HttpError(401));
   }
 };
 
